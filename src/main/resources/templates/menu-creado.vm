@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Creado</title>
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
+            color: #8B4513; /* Marrón oscuro para el texto principal */
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            margin: 0; /* Elimina el margen predeterminado */
+            padding: 20px; /* Agrega espacio alrededor del contenido */
+        }
+
+        h1 {
+            color: #8B4513; /* Marrón oscuro para los encabezados h1 */
+        }
+
+        img {
+            max-width: 20%; /* Asegura que la imagen se ajuste al ancho del contenedor */
+            border-radius: 30px;
+        }
+
+        p {
+            margin: 20px 0; /* Agrega espacio vertical alrededor del párrafo */
+        }
+
+        a {
+            text-decoration: none; /* Elimina la subraya del enlace */
+            background-color: #8B4513; /* Marrón oscuro para el fondo del enlace */
+            color: #fff; /* Texto blanco */
+            padding: 10px 20px; /* Agrega espacio alrededor del enlace */
+            border-radius: 5px; /* Borde redondeado */
+        }
+
+        a:hover {
+            background-color: #D2691E; /* Marrón dorado al pasar el mouse sobre el enlace */
+        }
+    </style>
+</head>
+<body>
+    
+    <div style="text-align: center;">
+        <img src="https://th.bing.com/th/id/OIP.kwx6Lvr8u-RJPYL2wASezQAAAA?pid=ImgDet&rs=1" alt="Icono de validación" >
+        <p>¡El menú se ha creado correctamente!</p>
+        <a href="/" style="text-decoration: none;">Volver a Inicio</a>
+    </div>
+</body>
+</html>

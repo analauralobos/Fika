@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Menú</title>
+    <style>
+        body {
+            background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
+            color: #8B4513; /* Marrón oscuro para el texto principal */
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            margin: 0; /* Elimina el margen predeterminado */
+            padding: 20px; /* Agrega espacio alrededor del contenido */
+        }
+
+        h1 {
+            color: #8B4513; /* Marrón oscuro para los encabezados h1 */
+        }
+
+        ul {
+            list-style-type: none; /* Elimina los marcadores de lista */
+            padding: 0; /* Elimina el espacio de relleno en la lista */
+        }
+
+        li {
+            background-color: #FFF8DC; /* Fondo de los elementos de lista en marrón claro */
+            padding: 10px; /* Agrega espacio alrededor de los elementos de lista */
+            margin-bottom: 10px; /* Agrega espacio entre los elementos de lista */
+        }
+
+        strong {
+            color: #D2691E; /* Marrón dorado para el texto en negrita */
+        }
+
+        /* Estilos para el breadcrumb */
+        .breadcrumb {
+            background-color: transparent; /* Fondo transparente para el breadcrumb */
+            padding: 0; /* Elimina el espacio de relleno predeterminado */
+            display: flex; /* Muestra los elementos del breadcrumb en una fila */
+            list-style: none; /* Oculta los números o puntos en la lista */
+        }
+
+        .breadcrumb-item {
+            color: #8B4513; /* Marrón oscuro para los elementos del breadcrumb */
+            margin-right: 10px; /* Agrega espacio entre los elementos del breadcrumb */
+        }
+
+        .breadcrumb-item:last-child {
+            margin-right: 0; /* Elimina el espacio después del último elemento del breadcrumb */
+        }
+
+        .breadcrumb-item a {
+            color: #8B4513; /* Marrón oscuro para los enlaces del breadcrumb */
+            text-decoration: none; /* Elimina la subraya de los enlaces */
+        }
+
+        .breadcrumb-item.active {
+            color: #D2691E; /* Marrón dorado para la página actual en el breadcrumb */
+        }
+
+    </style>
+</head>
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="/menu">Menús</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Crear Menú</li>
+        </ol>
+    </nav>
+
+    <h1>Crear Menú</h1>
+
+    <form action="/crear-menu" method="post">
+        <label for="nombreMenu">Nombre del Menú:</label>
+        <input type="text" id="nombreMenu" name="nombreMenu" required>
+        <br>
+
+        <label for="descripcion">Descripción del Menú:</label>
+        <textarea id="descripcion" name="descripcion"></textarea>
+        <br>
+
+        <label for="aumento">Aumento:</label>
+        <input type="number" step="0.01" id="aumento" name="aumento">
+        <br>
+
+        <label for="descuento">Descuento:</label>
+        <input type="number" step="0.01" id="descuento" name="descuento">
+        <br>
+
+        <label for="productos">Selecciona los Productos:</label>
+        <ul>
+            #foreach ($producto in $productos)
+            <li>
+                <label>
+                    <input type="checkbox" name="productos[]" value="$producto.id">
+                    $producto.nombre
+                </label>
+                
+                Cantidad: <input type="number" name="cantidadProductos[]" value="0">
+            </li>
+            #end
+        </ul>
+
+        <input type="submit" value="Crear Menú">
+
+    </form>
+</body>
+</html>

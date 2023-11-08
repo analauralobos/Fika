@@ -1,0 +1,59 @@
+#parse("templates/encabezado.html")
+
+
+<body>
+    <!-- Contenido principal de la página de inicio -->
+    <section class="inicio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center mb-5">
+                    <h1>Bienvenido a Fika Café</h1>
+                    <p>Descubre nuestras deliciosas opciones de café y más.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    
+                    <img src="https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/328620189_851754072713603_6419074448809958907_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0sV3vD7qOlYAX_wtiBb&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfAkbfCs_EWvlFdCipo1DqoqKA1mAKNLbXbEKMXip8Oz1g&oe=655093BE" alt="Imagen 1"  class="img-fluid mb-3" />
+                    <h2>Variedad de Café</h2>
+                    <p>Ofrecemos una amplia selección de cafés gourmet de todo el mundo.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/345656234_623888759648442_244652602173894488_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=_owwDXUJGiwAX9_oAAw&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfAXVBxXWkskhckcGdfZZdByzWvLIydESOHRppBWcBX_gg&oe=65506067" alt="Imagen 2" class="img-fluid mb-3">
+                    <h2>Productos Frescos</h2>
+                    <p>Nuestros productos son frescos y preparados con ingredientes de alta calidad.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/333101906_1861217107611485_4525509216977067775_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=--juOL3S8uoAX-z14y-&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfBQljZdQ0oQUclhikLVICjnNS6ZN3EqVDsmSF3gxLMU8w&oe=6550A80F" alt="Imagen 3" class="img-fluid mb-3">
+                    <h2>Entorno Acogedor</h2>
+                    <p>Disfruta de un ambiente acogedor y relajante mientras saboreas tu café favorito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<style>
+
+body {
+    background-color: #F5DEB3; /* Marrón oscuro como fondo principal */
+    color: #8B4513; /* Texto en color blanco */
+    font-family: Arial, sans-serif; /* Tipo de fuente */
+}
+
+.inicio {
+    padding: 100px 0; /* Espaciado interno en la sección de inicio */
+}
+
+.inicio p {
+    font-size: 24px; /* Tamaño de fuente */
+}
+
+/* Estilo de imagen de fondo */
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+</style>
+</body>
+
+#parse("templates/pie.html")
