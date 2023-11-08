@@ -1,0 +1,60 @@
+/* Estilo básico para el encabezado */
+header {
+    background: url('img/fondo.jpg') center/cover no-repeat; /* Cambia la ruta a tu imagen de fondo */
+    color: #fff; /* Color del texto en el encabezado */
+    text-align: center;
+    padding: 100px 0;
+}
+
+/* Estilo para el logo de la empresa */
+.logo {
+    float: left;
+    margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+}
+
+/* Estilo para la barra de navegación */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(101, 67, 33, 0.8); /* Fondo semitransparente marrón */
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: #fff; /* Color del texto en la barra de navegación */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Cambia el color de fondo del elemento cuando se pasa el cursor por encima */
+.navbar li a:hover {
+    background-color: rgba(133, 92, 50, 0.8); /* Color de fondo marrón más oscuro semitransparente */
+}
+
+/* Estilo para los iconos de inicio de sesión (a la derecha) */
+.login-icons {
+    float: right;
+    margin-right: 20px; /* Ajusta el margen derecho según sea necesario */
+}
+
+/* Estilo para el contenido principal */
+section {
+    background: url('ruta/a/tu/imagen-de-fondo-principal.jpg') center/cover no-repeat; /* Cambia la ruta a tu imagen de fondo principal */
+    padding: 100px 0;
+    text-align: center;
+    color: #fff; /* Color del texto en el contenido principal */
+}
+
+/* Estilo para el pie de página */
+footer {
+    background-color: rgba(101, 67, 33, 0.8); /* Fondo semitransparente marrón */
+    padding: 20px 0;
+    text-align: center;
+    color: #fff; /* Color del texto en el pie de página */
+}

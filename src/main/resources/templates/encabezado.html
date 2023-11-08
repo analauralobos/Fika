@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Página de Inicio - Fika Café</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <link rel="stylesheet" href="css/bootstrap.rtl.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css"/>
+        
+        <style>
+            /* Estilos personalizados */
+            .navbar {
+                background-color: #8B4513; /* Marrón oscuro */
+                width: 100%; /* Ancho del 100% del contenedor padre */
+                padding: 10px 0; /* Agrega espacio superior e inferior para un mejor aspecto */
+            }
+
+            .navbar-dark .navbar-toggler-icon {
+                background-color: #fff; /* Blanco */
+            }
+
+            .navbar-nav .nav-item .nav-link {
+                color: #fff; /* Texto blanco */
+            }
+
+            .navbar-nav .nav-item .nav-link:hover {
+                color: #D2691E; /* Marrón dorado al pasar el mouse */
+            }
+            /* Estilo para opciones en hover */
+            .dropdown-menu .dropdown-item:hover {
+                background-color: #D2691E; /* Marrón claro */
+                color: #fff; /* Texto blanco */
+            }
+            /* Estilo para hacer que el logo sea más pequeño */
+            .logo-p {
+                max-width: 100px; /* Establece el ancho máximo deseado */
+                border-radius: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/298707358_401685458738998_2388309236151311540_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=HJgZmWptaYYAX9yILET&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfB4f-T3QGuNt8Je73q-jhavccLsDdqjDQ55GzMNOk-4QQ&oe=654FD7A6" alt="Logo" class="img-fluid logo-p"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Menú
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                                    <a class="dropdown-item" href="/menu">Ver Menú</a>
+                                    <a class="dropdown-item" href="/crear-menu">Crear Menú</a>
+                                    <!-- Agrega más opciones relacionadas con Menú aquí -->
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="productosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Productos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="productosDropdown">
+                                    <a class="dropdown-item" href="/productos">Ver Productos</a>
+                                    <a class="dropdown-item" href="/agregar-producto">Agregar Producto</a>
+                                    <!-- Agrega más opciones relacionadas con Productos aquí -->
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="usuariosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Usuarios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="usuariosDropdown">
+                                    <a class="dropdown-item" href="/usuarios">Ver Usuarios</a>
+                                    <a class="dropdown-item" href="/agregar-usuario">Agregar Usuario</a>
+                                    <!-- Agrega más opciones relacionadas con Usuarios aquí -->
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/reportes">Reportes</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="pedidosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pedidos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="pedidosDropdown">
+                                    <a class="dropdown-item" href="/pedidos">Ver Pedidos</a>
+                                    <a class="dropdown-item" href="/crear-pedido">Crear Pedido</a>
+                                    <!-- Agrega más opciones relacionadas con Pedidos aquí -->
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="ruta-a-tu-perfil.html"><img src="https://kallafut.com/wp-content/uploads/2020/02/icone_avatar_fond_marron.png" alt="Icono de perfil" class="img-fluid logo-p"></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
