@@ -23,6 +23,11 @@ public class Menu {
         this.precioTotal = precioTotal;
     }
 
+    Menu(int id, String nombre, double precioTotal) {
+        this.nombre = nombre;
+        this.precioTotal = precioTotal;
+    }
+
     // Getters y setters
 
     public int getId() {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito Vacío</title>
+    <style>
+        body {
+            background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
+            color: #8B4513; /* Marrón oscuro para el texto principal */
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            margin: 0; /* Elimina el margen predeterminado */
+            padding: 20px; /* Agrega espacio alrededor del contenido */
+            text-align: center; /* Centra el contenido */
+        }
+
+        h1 {
+            color: #8B4513; /* Marrón oscuro para los encabezados h1 */
+        }
+
+        .btn-detalles {
+            background-color: #D2691E; /* Marrón dorado para el botón */
+            color: white; /* Texto en blanco */
+            border: none; /* Sin borde */
+            padding: 10px 20px; /* Espaciado interior */
+            text-align: center; /* Texto centrado */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Mostrar en línea */
+            font-size: 16px; /* Tamaño de fuente */
+            margin: 10px 2px; /* Margen alrededor del botón */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Carrito Vacío</h1>
+
+    <p>Tu carrito está vacío. ¡Agrega productos y menús!</p>
+
+    <!-- Botones de acción -->
+    <div>
+        <a href="/home-usuario" class="btn-detalles">Volver a Inicio</a>
+        <a href="/menu-cliente" class="btn-detalles">Ver Menús</a>
+        <a href="/productos-cliente" class="btn-detalles">Ver Productos</a>
+    </div>
+
+</body>
+</html>

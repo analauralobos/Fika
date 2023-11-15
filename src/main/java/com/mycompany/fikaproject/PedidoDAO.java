@@ -11,9 +11,9 @@ import java.util.List;
 
 public class PedidoDAO {
     private final Connection connection;
-    private final ClienteDAO clienteDAO; // Agregamos una referencia a la clase ClienteDAO
+    private final UsuarioDAO clienteDAO; // Agregamos una referencia a la clase UsuarioDAO
     private final MenuDAO menuDAO; // Agregamos una referencia a la clase MenuDAO
-    public PedidoDAO(Connection connection, ClienteDAO clienteDAO, MenuDAO menuDAO) {
+    public PedidoDAO(Connection connection, UsuarioDAO clienteDAO, MenuDAO menuDAO) {
         this.connection = connection;
         this.clienteDAO = clienteDAO;
         this.menuDAO = menuDAO;
@@ -46,8 +46,8 @@ public class PedidoDAO {
                     e.printStackTrace();
                 }
 
-                // Utiliza el ClienteDAO para obtener el cliente por su ID
-                Cliente cliente = clienteDAO.obtenerClientePorId(clienteId);
+                // Utiliza el UsuarioDAO para obtener el cliente por su ID
+                Usuario cliente = clienteDAO.obtenerUsuarioPorId(clienteId);
                 Menu menu=  menuDAO.obtenerMenuPorId(menuId);
 
                 Pedido pedido = new Pedido(id, menu, cliente, fechaPedido, fechaEntrega, estado);
@@ -93,8 +93,8 @@ public class PedidoDAO {
                 e.printStackTrace();
             }
 
-            // Utiliza el ClienteDAO para obtener el cliente por su ID
-            Cliente cliente = clienteDAO.obtenerClientePorId(clienteId);
+            // Utiliza el UsuarioDAO para obtener el cliente por su ID
+            Usuario cliente = clienteDAO.obtenerUsuarioPorId(clienteId);
             Menu menu = menuDAO.obtenerMenuPorId(menuId);
 
             pedido = new Pedido(id, menu, cliente, fechaPedido, fechaEntrega, estado);

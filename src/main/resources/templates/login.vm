@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
+            color: #8B4513; /* Marrón oscuro para el texto principal */
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            margin: 0; /* Elimina el margen predeterminado */
+            padding: 20px; /* Agrega espacio alrededor del contenido */
+        }
+
+        h1 {
+            color: #8B4513; /* Marrón oscuro para los encabezados h1 */
+        }
+
+        form {
+            background-color: #FFF8DC; /* Fondo del formulario en marrón claro */
+            padding: 20px; /* Agrega espacio alrededor del formulario */
+            margin-top: 20px; /* Agrega espacio sobre el formulario */
+        }
+
+        label {
+            display: block; /* Muestra cada etiqueta en una línea */
+            margin-bottom: 10px; /* Agrega espacio debajo de cada etiqueta */
+        }
+
+        input {
+            width: 100%; /* Ocupa todo el ancho del contenedor */
+            padding: 10px; /* Espaciado interior */
+            margin-bottom: 20px; /* Agrega espacio debajo de cada campo de entrada */
+        }
+
+        button {
+            background-color: #D2691E; /* Marrón dorado para el botón */
+            color: white; /* Texto en blanco */
+            border: none; /* Sin borde */
+            padding: 10px 20px; /* Espaciado interior */
+            text-align: center; /* Texto centrado */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Mostrar en línea */
+            font-size: 16px; /* Tamaño de fuente */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+        }
+
+        .error-message {
+            color: red; /* Rojo para los mensajes de error */
+            margin-bottom: 10px; /* Agrega espacio debajo del mensaje de error */
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciar Sesión</h1>
+
+    #if($error)
+        <p class="error-message">$error</p>
+    #end
+
+    <form action="/login" method="post">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+</body>
+</html>
+

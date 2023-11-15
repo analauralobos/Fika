@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detalle de Pedido</title>
-<style>
+    <title>Productos</title>
+    <style>
+        
         body {
             background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
             color: #8B4513; /* Marrón oscuro para el texto principal */
@@ -36,12 +37,12 @@
             background-color: transparent; /* Fondo transparente para el breadcrumb */
             padding: 0; /* Elimina el espacio de relleno predeterminado */
             display: flex; /* Muestra los elementos del breadcrumb en una fila */
+            list-style: none; /* Oculta los números o puntos en la lista */
         }
 
         .breadcrumb-item {
             color: #8B4513; /* Marrón oscuro para los elementos del breadcrumb */
             margin-right: 10px; /* Agrega espacio entre los elementos del breadcrumb */
-            list-style: none; /* Oculta los números o puntos en la lista */
         }
 
         .breadcrumb-item:last-child {
@@ -56,62 +57,27 @@
         .breadcrumb-item.active {
             color: #D2691E; /* Marrón dorado para la página actual en el breadcrumb */
         }
-
-        /* Estilos para el botón Volver */
-        .btn-volver {
-            background-color: #D2691E; /* Marrón dorado para el botón */
-            color: white; /* Texto en blanco */
-            border: none; /* Sin borde */
-            padding: 10px 20px; /* Espaciado interior */
-            text-align: center; /* Texto centrado */
-            text-decoration: none; /* Sin subrayado */
-            display: inline-block; /* Mostrar en línea */
-            font-size: 16px; /* Tamaño de fuente */
-            margin: 10px 2px; /* Margen alrededor del botón */
-            cursor: pointer; /* Cambia el cursor al pasar el ratón */
-        }
     </style>
 </head>
 <body>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/home-admin">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="/pedidos">Pedidos</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Detalles del Pedido</li>
+            <li class="breadcrumb-item active" aria-current="page">Productos</li>
         </ol>
     </nav>
 
-    <h1>Detalle del Pedido</h1>
-<ul>
-<li>
-    <p><strong>Número de Pedido:</strong> $pedido.getId()</p>
-    <p><strong>Fecha de Pedido:</strong> $pedido.fechaPedido</p>
-    <p><strong>Fecha de Entrega:</strong> $pedido.fechaEntrega</p>
-    <p><strong>Estado del Pedido:</strong> $pedido.estado</p>
-    <p><strong>Cliente:</strong> $pedido.cliente.nombre</p>
+    <h1>Lista de Productos</h1>
+    <ul>
+        #foreach ($producto in $productos)
+        <li>
+            <h2>$producto.getNombre()</h2>
+            <img src="$producto.getImagenUrl()" alt="$producto.getNombre()" width="150">
+            <p><strong>Categoría:</strong> $producto.getCategoria()</p>
+            <p><strong>Precio:</strong> $producto.getPrecio()</p>
+        </li>
+        #end
+    </ul>
 
-
-        <p><strong>Nombre menú:</strong>$pedido.menus.nombre</p>
-        <p><strong>Precio Total:</strong> $pedido.menus.getPrecioTotal()</p>
-        <p><strong>Descripción:</strong> $pedido.menus.getDescripcion()</p>
-        <p><strong>Descuento:</strong> $pedido.menus.getDescuento()</p>
-        <p><strong>Aumento:</strong> $pedido.menus.getAumento()</p>
-        
-        
-        <p><strong>Productos:</strong></p>
-        <ul>
-            #foreach ($producto in $pedido.menus.getProductos())
-            <li>
-                <p><strong>Nombre:</strong> $producto.getNombre()</p>
-                <p><strong>Categoría:</strong> $producto.getCategoria()</p>
-                <p><strong>Precio:</strong> $producto.getPrecio()</p>
-            </li>
-            #end
-        </ul>
-<a class="btn-volver" href="/pedidos">Volver</a>
-</li>
- </ul>  
-    
 </body>
 </html>
-

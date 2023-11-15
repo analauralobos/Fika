@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Productos</title>
     <style>
-        /* Estilos personalizados */
+        
         body {
             background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
             color: #8B4513; /* Marrón oscuro para el texto principal */
@@ -37,6 +37,7 @@
             background-color: transparent; /* Fondo transparente para el breadcrumb */
             padding: 0; /* Elimina el espacio de relleno predeterminado */
             display: flex; /* Muestra los elementos del breadcrumb en una fila */
+            list-style: none; /* Oculta los números o puntos en la lista */
         }
 
         .breadcrumb-item {
@@ -74,6 +75,8 @@
             <img src="$producto.getImagenUrl()" alt="$producto.getNombre()" width="150">
             <p><strong>Categoría:</strong> $producto.getCategoria()</p>
             <p><strong>Precio:</strong> $producto.getPrecio()</p>
+            
+            
         </li>
         #end
     </ul>
