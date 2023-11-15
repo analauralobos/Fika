@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2023 a las 09:49:11
+-- Tiempo de generación: 15-11-2023 a las 03:55:42
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 5.6.40
 
@@ -12,32 +12,76 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Base de datos: `fikadb`
 --
+CREATE DATABASE IF NOT EXISTS `fikadb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `fikadb`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Estructura de tabla para la tabla `carritos`
 --
 
-DROP TABLE IF EXISTS `clientes`;
-CREATE TABLE `clientes` (
+DROP TABLE IF EXISTS `carritos`;
+CREATE TABLE `carritos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telefono` varchar(30) NOT NULL,
-  `edad` int(11) NOT NULL
+  `cliente_id` int(11) DEFAULT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Volcado de datos para la tabla `carritos`
 --
 
-INSERT INTO `clientes` (`id`, `nombre`, `email`, `telefono`, `edad`) VALUES
-(1, 'Juan Pérez', 'juan@example.com', '2302445566', 30),
-(2, 'María López', 'maria@example.com', '2302123456', 44);
+INSERT INTO `carritos` (`id`, `cliente_id`, `fecha_creacion`, `total`) VALUES
+(1, 1, '2023-11-14 01:49:06', 0),
+(3, 2, '2023-11-10 03:00:00', 19.49),
+(4, 9, '2023-11-14 03:00:00', 6.49),
+(5, 10, '2023-11-14 03:00:00', 30.06),
+(6, 11, '2023-11-14 03:00:00', 72.56);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito_productos`
+--
+
+DROP TABLE IF EXISTS `carrito_productos`;
+CREATE TABLE `carrito_productos` (
+  `carrito_id` int(11) DEFAULT NULL,
+  `producto_id` int(11) DEFAULT NULL,
+  `menu_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `carrito_productos`
+--
+
+INSERT INTO `carrito_productos` (`carrito_id`, `producto_id`, `menu_id`) VALUES
+(1, 1, NULL),
+(1, NULL, 1),
+(3, 7, NULL),
+(3, NULL, 1),
+(3, NULL, 17),
+(4, NULL, 19),
+(5, NULL, 18),
+(6, NULL, 1),
+(6, NULL, 2),
+(6, NULL, 2),
+(6, 3, NULL),
+(6, 8, NULL),
+(6, 4, NULL),
+(6, 9, NULL),
+(6, NULL, 18);
 
 -- --------------------------------------------------------
 
@@ -65,7 +109,8 @@ INSERT INTO `menus` (`id`, `nombre`, `descripcion`, `precio_total`, `descuento`,
 (17, 'Menu Merienda', '1 licuado de frutilla y dos croissants', '6.49', '0.15', NULL),
 (18, 'Menu Cena con Postre', '2 cafés espresso, 2 licuados de frutilla y banana, 2 sándwiches de pollo y 2 ensaladas cesar', '30.06', '0.00', '0.20'),
 (19, 'Oferta de Mediodía', '1 café espresso y un sándwich de pollo', '6.49', NULL, NULL),
-(20, 'Oferta de Mediodía 2', 'gfghhgfh', '5.98', '0.40', '0.00');
+(20, 'Oferta de Mediodía 2', 'gfghhgfh', '5.98', '0.40', '0.00'),
+(21, 'Promo Navidad', 'dos minitortas y dos frappes', '27.89', '0.38', '0.00');
 
 -- --------------------------------------------------------
 
@@ -98,7 +143,9 @@ INSERT INTO `menu_producto` (`menu_id`, `producto_id`, `cantidad`) VALUES
 (19, 1, 1),
 (19, 3, 1),
 (20, 1, 1),
-(20, 4, 1);
+(20, 4, 1),
+(21, 8, 2),
+(21, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -145,25 +192,63 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `precio`, `imagenURL`) VALUES
-(1, 'Café Espresso', 'Café', '2.50', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/333447928_192830956724355_1649625247474566647_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=s0Lw99Gaa5AAX_pA0kd&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfCXcGtj8XysCW1jv26hiPvzCqupMNfoZeOGXHunyuV_kA&oe=655058CB'),
-(2, 'Croissant', 'Panadería', '1.50', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/344753720_663532498916934_1140539468550432441_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Pztj-86W8mgAX_AoRLS&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfDOD52JbJ6BSdqH_Ij_pIgV_u32Dd0D2kUfShJT6DxJIA&oe=6550B023'),
-(3, 'Avocado Toast', 'Sándwich', '4.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/291892065_375594854681392_763866727399824180_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LIcJ20AIKfUAX9qj2a4&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfDnO1SJRRMzGv5nqydNaKa2mAVK8n490CJkaIWVPceUFA&oe=65505E02'),
-(4, 'Scons', 'Panadería', '3.50', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/365184849_622220236681466_8350090581753312053_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=u9Tj6CkQetEAX_jR-7N&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfAk-JctIMmocOFXO2xOaZDc8HUtSeA7AVVgGeV38eUmxg&oe=65500D9E'),
-(5, 'Cappuccino', 'Café', '7.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/299750310_401681455406065_2172305888026799752_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=lduaxwzRrWwAX8B6SvI&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfAn25wCqzWKsMIRJ_vsb8Wiw5XzMidTH71aN4yKB4LD7g&oe=654F9FC4'),
-(6, 'Licuado de frutilla y banana', 'Licuados', '5.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/305037413_415356167371927_2397485448618020930_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LWXJeM4YzjMAX-gsolk&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfBNuKn6QI6G9Nz6qwyR9GQAXJVepocQ8Fc5m2FJIEVwOg&oe=65500761'),
-(7, 'Torta de zanahoria', 'Tortas', '9.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/383210431_646586400911516_1908898908354379200_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=OLuzrVeTGqcAX8BzHa8&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfBugAzc1VLPf3A62oeHI8fJ5I8-B_3Z1cQFix70IBFJ8w&oe=6550BD57'),
-(8, 'Mini torta de chocolate y dulce de leche', 'Tortas', '8.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/365771078_622218156681674_5688235395764110437_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Nmn0jhGuyaAAX_mLlPw&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfBdVVu-N-r5AMdR72FBvo1IKc84y6QCB0D34RK9iTDdMg&oe=654FBC50'),
-(9, 'Frappe americana', 'Helados', '6.00', 'https://scontent.fgpo2-1.fna.fbcdn.net/v/t39.30808-6/326199269_1343006366458547_3804320178252054790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ASU3B9t2HWUAX_z3Hw0&_nc_ht=scontent.fgpo2-1.fna&oh=00_AfCh_LgaCZkAdUHOVBKrYkrIu7bU1Dq2QBSn-Fga7DQV4w&oe=654F5189');
+(1, 'Café Espresso', 'Café', '2.50', 'https://th.bing.com/th/id/OIP.pD-sZ8PSsQW4bhYbJmkTjgHaEK?pid=ImgDet&rs=1'),
+(2, 'Croissant', 'Panadería', '1.50', 'https://th.bing.com/th/id/R.b646fb97a40983872cad253a45961947?rik=8tEiNR8Zc9AOAQ&pid=ImgRaw&r=0'),
+(3, 'Avocado Toast', 'Sándwich', '4.00', 'https://th.bing.com/th/id/OIP.9xQEEBknmdWBaD56b-w_KgHaHa?pid=ImgDet&rs=1'),
+(4, 'Scons', 'Panadería', '3.50', 'https://th.bing.com/th/id/OIP.UgUbjNXXqmzJ0y25W8d3LgHaHa?pid=ImgDet&rs=1'),
+(5, 'Cappuccino', 'Café', '7.00', 'https://th.bing.com/th/id/OIP.sORUCLQs6IFavbrcEWRPgAHaE8?pid=ImgDet&rs=1'),
+(6, 'Licuado de frutilla y banana', 'Licuados', '5.00', 'https://th.bing.com/th/id/OIP.cIvYshFHyrs4MQLEcQ4cdwHaHa?pid=ImgDet&rs=1'),
+(7, 'Torta de zanahoria', 'Tortas', '9.00', 'https://th.bing.com/th/id/OIP.fU-DdZ5QXGbi0dgAyxv9oAHaFR?pid=ImgDet&rs=1'),
+(8, 'Mini Tarta de Chocolate y Dulce de Leche', 'Tortas', '8.00', 'https://th.bing.com/th/id/OIP.93xDnTZcAMH4XCk45zpdZAHaHa?pid=ImgDet&w=624&h=624&rs=1'),
+(9, 'Frappe americana', 'Helados', '6.00', 'https://th.bing.com/th/id/OIP.81_uFFhL62B0RqxteMrTZQHaE8?pid=ImgDet&rs=1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefono` varchar(30) NOT NULL,
+  `edad` int(11) NOT NULL,
+  `contraseña` varchar(50) NOT NULL,
+  `rol` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `telefono`, `edad`, `contraseña`, `rol`) VALUES
+(1, 'Juan Pérez', 'juan@example.com', '2302445566', 30, '123456', 'CLIENTE'),
+(2, 'María López', 'maria@example.com', '2302123456', 44, '123456', 'CLIENTE'),
+(3, 'Francisco Villa', 'fran@example.com', '2302543210', 54, '123456', 'ADMIN'),
+(9, 'Manuel Belgrano', 'manuel@example.com', '4567998877', 55, '123456', 'CLIENTE'),
+(10, 'Juan Manuel de Rosas', 'rosas@example.com', '2302454545', 32, '123456', 'CLIENTE'),
+(11, 'Domingo Sarmiento', 'domingo@example.com', '2302343434', 66, '123456', 'CLIENTE');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `clientes`
+-- Indices de la tabla `carritos`
 --
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `carritos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cliente_id` (`cliente_id`);
+
+--
+-- Indices de la tabla `carrito_productos`
+--
+ALTER TABLE `carrito_productos`
+  ADD KEY `carrito_id` (`carrito_id`),
+  ADD KEY `producto_id` (`producto_id`),
+  ADD KEY `menu_id` (`menu_id`);
 
 --
 -- Indices de la tabla `menus`
@@ -193,20 +278,26 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT de la tabla `carritos`
 --
-ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `carritos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
@@ -221,8 +312,28 @@ ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `carritos`
+--
+ALTER TABLE `carritos`
+  ADD CONSTRAINT `carritos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `carrito_productos`
+--
+ALTER TABLE `carrito_productos`
+  ADD CONSTRAINT `carrito_productos_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`),
+  ADD CONSTRAINT `carrito_productos_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `carrito_productos_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
 
 --
 -- Filtros para la tabla `menu_producto`
@@ -235,7 +346,10 @@ ALTER TABLE `menu_producto`
 -- Filtros para la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`);
 COMMIT;
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
