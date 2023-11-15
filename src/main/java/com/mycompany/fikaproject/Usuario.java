@@ -3,19 +3,23 @@ package com.mycompany.fikaproject;
 import lombok.Data;
 
 @Data
-public class Cliente {
+public class Usuario {
     private int id;
     private String nombre;
     private String email;
+    private String contraseña;
     private String telefono;
     private int edad;
+    private String rol;
 
-    public Cliente(int id, String nombre, String email, String telefono, int edad) {
+    public Usuario(int id, String nombre, String email,String contraseña, String telefono, int edad, String rol) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
+        this.contraseña = contraseña;
         this.telefono = telefono;
         this.edad = edad;
+        this.rol = rol;
     }
     @Override
     public String toString() {
@@ -29,7 +33,7 @@ public class Cliente {
     }
 
     int getId() {
-        return id; //To change body of generated methods, choose Tools | Templates.
+        return id; 
     }
 
     public String getNombre() {
@@ -38,6 +42,22 @@ public class Cliente {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public String getTelefono() {

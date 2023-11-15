@@ -1,7 +1,7 @@
 
 
 
-#parse("templates/encabezado.html")
+#parse("templates/encabezadoAdmin.html")
 
 
 <body>

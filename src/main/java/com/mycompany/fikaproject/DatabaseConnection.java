@@ -22,7 +22,7 @@ public class DatabaseConnection {
             try {
                 connection.close();
             } catch (SQLException e) {
-                // Manejar cualquier excepción de cierre
+                
                 e.printStackTrace();
             }
         }

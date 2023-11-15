@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Menú Creado</title>
+    <title>Usuario Creado</title>
     <style>
         /* Estilos personalizados */
         body {
@@ -43,8 +43,9 @@
     
     <div style="text-align: center;">
         <img src="https://th.bing.com/th/id/OIP.kwx6Lvr8u-RJPYL2wASezQAAAA?pid=ImgDet&rs=1" alt="Icono de validación" >
-        <p>¡El menú se ha creado correctamente!</p>
-        <a href="/home-admin" style="text-decoration: none;">Volver a Inicio</a>
+        <p>¡Usuario creado exitosamente!</p>
+        <a href="/login" style="text-decoration: none;">Ingresar</a>
+        <a href="/" style="text-decoration: none;">Ir al Inicio</a>
     </div>
 </body>
 </html>

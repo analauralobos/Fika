@@ -31,6 +31,22 @@ public class MenuController {
         return velocityTemplateEngine.render(new ModelAndView(model, "templates/menu.vm"));
     };
     
+    public Route mostrarMenusCliente = (Request request, Response response) -> {
+        List<Menu> menu = menuDAO.obtenerTodosLosMenus();
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("menus", menu);
+
+        return velocityTemplateEngine.render(new ModelAndView(model, "templates/menu-cliente.vm"));
+    };
+        public Route mostrarMenusAdmin = (Request request, Response response) -> {
+        List<Menu> menu = menuDAO.obtenerTodosLosMenus();
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("menus", menu);
+
+        return velocityTemplateEngine.render(new ModelAndView(model, "templates/menu-admin.vm"));
+    };
     public Route mostrarFormularioCreacionMenu = (Request request, Response response) -> {
         List<Producto> productosDisponibles = menuDAO.obtenerTodosLosProductos(); // Recupera los productos de la base de datos
         Map<String, Object> model = new HashMap<>();
@@ -100,6 +116,41 @@ public class MenuController {
             model.put("menu", menu);
 
             return velocityTemplateEngine.render(new ModelAndView(model, "templates/detalle-menu.vm"));
+        } else {
+            response.status(404); // Devuelve un código de estado 404 si el menú no se encontró
+            return "Menú no encontrado";
+        }
+    };
+    
+    public Route mostrarDetallesMenuC = (Request request, Response response) -> {
+        int menuId = Integer.parseInt(request.params(":id")); // Obtén el ID del menú desde los parámetros
+
+        // Recupera el menú y sus detalles (asegúrate de que tu MenuDAO tenga un método para esto)
+        Menu menu = menuDAO.obtenerMenuPorId(menuId);
+
+        // Verifica si el menú se encontró (puedes manejar el caso si no se encuentra)
+        if (menu != null) {
+            Map<String, Object> model = new HashMap<>();
+            model.put("menu", menu);
+
+            return velocityTemplateEngine.render(new ModelAndView(model, "templates/detalle-menu-cliente.vm"));
+        } else {
+            response.status(404); // Devuelve un código de estado 404 si el menú no se encontró
+            return "Menú no encontrado";
+        }
+    };
+    public Route mostrarDetallesMenuA = (Request request, Response response) -> {
+        int menuId = Integer.parseInt(request.params(":id")); // Obtén el ID del menú desde los parámetros
+
+        // Recupera el menú y sus detalles (asegúrate de que tu MenuDAO tenga un método para esto)
+        Menu menu = menuDAO.obtenerMenuPorId(menuId);
+
+        // Verifica si el menú se encontró (puedes manejar el caso si no se encuentra)
+        if (menu != null) {
+            Map<String, Object> model = new HashMap<>();
+            model.put("menu", menu);
+
+            return velocityTemplateEngine.render(new ModelAndView(model, "templates/detalle-menu-admin.vm"));
         } else {
             response.status(404); // Devuelve un código de estado 404 si el menú no se encontró
             return "Menú no encontrado";

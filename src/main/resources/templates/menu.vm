@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Menús</title>
     <style>
-        /* Estilos personalizados */
         body {
             background-color: #D2B48C; /* Marrón claro para el fondo del cuerpo */
             color: #8B4513; /* Marrón oscuro para el texto principal */

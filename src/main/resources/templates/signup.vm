@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            background-color: #D2B48C;
+            color: #8B4513;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #8B4513;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #FFF8DC;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #D2691E;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #D2691E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Registro de Usuario</h1>
+
+    <form action="/signup" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required>
+        
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad" required>
+
+        <button type="submit">Registrarse</button>
+    </form>
+
+</body>
+</html>
+

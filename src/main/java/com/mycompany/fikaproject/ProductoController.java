@@ -26,6 +26,23 @@ public class ProductoController {
 
         return velocityTemplateEngine.render(new ModelAndView(model, "templates/productos.vm"));
     };
+    
+    public Route mostrarProductosCliente = (Request request, Response response) -> {
+        List<Producto> productos = productoDAO.obtenerTodosLosProductos();
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("productos", productos);
+
+        return velocityTemplateEngine.render(new ModelAndView(model, "templates/productos-cliente.vm"));
+    };
+    public Route mostrarProductosAdmin = (Request request, Response response) -> {
+        List<Producto> productos = productoDAO.obtenerTodosLosProductos();
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("productos", productos);
+
+        return velocityTemplateEngine.render(new ModelAndView(model, "templates/productos-admin.vm"));
+    };
 
     
 }

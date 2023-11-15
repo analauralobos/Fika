@@ -5,22 +5,25 @@ import spark.template.velocity.VelocityTemplateEngine;
 public class FikaApp {
 
     public static void main(String[] args) {
-    // Crear una instancia de VelocityTemplateEngine
+    
     VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
     
-    // Crear una instancia de ClienteDAO, PedidoDAO, MenuDAO, ProductoDAO
-    ClienteDAO clienteDAO = new ClienteDAO();
+    
+    UsuarioDAO clienteDAO = new UsuarioDAO();
     MenuDAO menuDAO = new MenuDAO();
     PedidoDAO pedidoDAO = new PedidoDAO(DatabaseConnection.getConnection(), clienteDAO, menuDAO);
     ProductoDAO productoDAO = new ProductoDAO();
-    // Crear una instancia de PedidoController y pasar el PedidoDAO
+    CarritoDAO carritoDAO = new CarritoDAO();
+    UsuarioDAO usuarioDAO= new UsuarioDAO();
+    
     PedidoController pedidoController = new PedidoController(pedidoDAO);
     MenuController menuController = new MenuController(menuDAO);
     ProductoController productoController = new ProductoController(productoDAO);
-    // Crear una instancia de FikaAppController
-    FikaAppController fikaAppController = new FikaAppController(pedidoController, menuController, productoController, velocityTemplateEngine);
+    CarritoController carritoController = new CarritoController(carritoDAO);
+    UsuarioController usuarioController = new UsuarioController(usuarioDAO);
     
-    // Llamar al método init() en la instancia de FikaAppController
+    FikaAppController fikaAppController = new FikaAppController(pedidoController, menuController,usuarioController, productoController,carritoController, velocityTemplateEngine);
+    
     fikaAppController.init();
 }
 

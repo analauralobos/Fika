@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class Pedido {
     private int id;
-    private Cliente cliente;
+    private Usuario cliente;
     private Menu menus;
     private Date fechaPedido;
     private Date fechaEntrega;
     private String estado;
 
-    public Pedido(int id, Menu menus, Cliente cliente, Date fechaPedido, Date fechaEntrega, String estado) {
+    public Pedido(int id, Menu menus, Usuario cliente, Date fechaPedido, Date fechaEntrega, String estado) {
         this.id = id;
         this.cliente = cliente;
         this.menus = menus;
@@ -28,11 +28,11 @@ public class Pedido {
         return id;
     }
 
-    public Cliente getCliente() {
+    public Usuario getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Usuario cliente) {
         this.cliente = cliente;
     }
 

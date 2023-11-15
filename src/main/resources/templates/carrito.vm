@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Carrito</title>
+    <style>
+        body {
+            background-color: #D2B48C;
+            color: #8B4513;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #8B4513;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #FFF8DC;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #D2691E;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb-item {
+            color: #8B4513;
+            margin-right: 10px;
+        }
+
+        .breadcrumb-item:last-child {
+            margin-right: 0;
+        }
+
+        .breadcrumb-item a {
+            color: #8B4513;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #D2691E;
+        }
+
+        .btn-detalles {
+            background-color: #D2691E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+        }
+
+        /* Estilos adicionales para mejorar la presentación */
+        .resumen-container {
+            background-color: #FFF8DC;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .acciones-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Estilo adicional para el botón "Eliminar del Carrito" */
+        .btn-eliminar-derecha {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/home-usuario">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detalles del Carrito</li>
+        </ol>
+    </nav>
+    
+    <h1>Detalles del Carrito</h1>
+
+    <ul>
+        <li>
+            <h2>Precio total: $carrito.getPrecioTotal()</h2>
+            
+                    
+                    #foreach ($producto in $carrito.getProductos())
+                        <p><strong>$producto.getNombre()</strong></p>
+                        <form action="/eliminar-del-carrito" method="post" class="btn-eliminar-derecha">
+                            <input type="hidden" name="itemId" value="$producto.id">
+                            <button type="submit" class="btn-detalles">Eliminar del Carrito</button>
+                        </form>
+                    #end
+                
+                    
+                    #foreach ($menu in $carrito.getMenus())
+                        <p><strong>$menu.getNombre()</strong></p>                        
+                        <form action="/eliminar-del-carrito" method="post" class="btn-eliminar-derecha">
+                            <input type="hidden" name="itemId" value="$menu.id">
+                            <button type="submit" class="btn-detalles">Eliminar del Carrito</button>
+                        </form>
+                    #end
+                
+        </li>
+    </ul>
+
+    <!-- Resumen del carrito -->
+    <div class="resumen-container">
+        <ul>
+            <li>
+                <h2>Resumen del Carrito</h2>
+                <p><strong>Total a Pagar:</strong> $carrito.getPrecioTotal()</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Botones de acción general -->
+    <div class="acciones-container">
+        <form action="/vaciar-carrito" method="post">
+            <button type="submit" class="btn-detalles">Vaciar Carrito</button>
+        </form>
+        <form action="/agregar-mas-productos" method="post">
+            <button type="submit" class="btn-detalles">Agregar Más Productos</button>
+        </form>
+        <form action="/realizar-pago" method="post">
+            <button type="submit" class="btn-detalles">Realizar Pago</button>
+        </form>
+    </div>
+
+</body>
+</html>
+

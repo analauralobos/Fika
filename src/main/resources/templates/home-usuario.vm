@@ -1,7 +1,5 @@
 
-
-
-#parse("templates/encabezado.html")
+#parse("templates/encabezadoCliente.html")
 
 
 <body>
